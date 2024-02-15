@@ -2,14 +2,14 @@ using System.Data.SQLite;
 
 namespace Wpf_PointOfInterest_2024_02_15;
 
-public class DbContext
+public static class DbContext
 {
     private const string ConnectionString = @"Data Source=C:\Repos\DataBase\SQLite_poi\poiDb";
 
     /// <summary>
     ///   Get all Poi from the database
     /// </summary>
-    public void ConsoleAllPoi()
+    public static void ConsoleAllPoi()
     {
         // connect sqlite db
 
@@ -42,7 +42,7 @@ public class DbContext
     ///  Get all Poi.Names from the database
     /// </summary>
     /// <returns>  List of all Poi.Names </returns>
-    public List<string> GetAllPoiNames()
+    public static List<string> GetAllPoiNames()
     {
         List<string> poiNames = new List<string>();
 
@@ -71,7 +71,7 @@ public class DbContext
     /// </summary>
     /// <param name="name"></param>
     /// <returns> Poi </returns>
-    public Poi GetPoiByName(string name)
+    public static Poi GetPoiByName(string name)
     {
         Poi poi = null!;
 

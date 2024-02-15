@@ -13,8 +13,8 @@ public class Poi
     {
         PID = pid;
         Name = name;
-        Breitengrad = breitengrad;
-        Laengengrad = laengengrad;
+        Breitengrad = breitengrad.Replace(',', '.');
+        Laengengrad = laengengrad.Replace(',', '.');;
         Bemerkung = bemerkung;
         Link = link;
     }
@@ -48,6 +48,16 @@ public class Poi
     {
         return Link;
     }
-    
-    
+
+    public override string ToString()
+    {
+        return "Poi{" +
+               "PID=" + PID +
+               ", Name='" + Name + '\'' +
+               ", Breitengrad='" + Breitengrad + '\'' +
+               ", Laengengrad='" + Laengengrad + '\'' +
+               ", Bemerkung='" + Bemerkung + '\'' +
+               ", Link='" + Link + '\'' +
+               '}';
+    }
 }
