@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf_PointOfInterest_2024-02-15", "Wpf_PointOfInterest_2024-02-15.csproj", "{56538463-9252-4F68-9DFE-2545F5A8D365}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56538463-9252-4F68-9DFE-2545F5A8D365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56538463-9252-4F68-9DFE-2545F5A8D365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56538463-9252-4F68-9DFE-2545F5A8D365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56538463-9252-4F68-9DFE-2545F5A8D365}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
