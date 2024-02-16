@@ -3,7 +3,7 @@ namespace Wpf_PointOfInterest_2024_02_15;
 public class Poi
 {
     private int PID;
-    private string Name;
+    private string Name; 
     private string Breitengrad;
     private string Laengengrad;
     private string Bemerkung;
@@ -14,7 +14,7 @@ public class Poi
         PID = pid;
         Name = name;
         Breitengrad = breitengrad.Replace(',', '.');
-        Laengengrad = laengengrad.Replace(',', '.');;
+        Laengengrad = laengengrad.Replace(',', '.');
         Bemerkung = bemerkung;
         Link = link;
     }
@@ -51,13 +51,13 @@ public class Poi
 
     public override string ToString()
     {
-        return "Poi{" +
-               "PID=" + PID +
-               ", Name='" + Name + '\'' +
-               ", Breitengrad='" + Breitengrad + '\'' +
-               ", Laengengrad='" + Laengengrad + '\'' +
-               ", Bemerkung='" + Bemerkung + '\'' +
-               ", Link='" + Link + '\'' +
+        return "Poi{\n" +
+               "\tPID=" + PID + ",\n" +
+               "\tName='" + Name + "', \n" +
+               "\tBreitengrad='" + Breitengrad + "', \n" +
+               "\tLaengengrad='" + Laengengrad + "', \n" +
+               "\tBemerkung='" + Bemerkung + "', \n" +
+               "\tLink='" + Link + "', \n" +
                '}';
     }
 }

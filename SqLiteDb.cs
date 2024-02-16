@@ -2,17 +2,16 @@ using System.Data.SQLite;
 
 namespace Wpf_PointOfInterest_2024_02_15;
 
-public static class DbContext
+public static class SqLiteDb
 {
-    private const string ConnectionString = @"Data Source=C:\Repos\DataBase\SQLite_poi\poiDb";
-
+    //private const string ConnectionString = @"Data Source=C:\Repos\DataBase\SQLite_poi\poiDb";
+    private const string ConnectionString = @"Data Source=C:\Repos\Databank\Sqlite2\poi.sqlite";
     /// <summary>
-    ///   Get all Poi from the database
+    ///   Print all Poi from database to console
     /// </summary>
     public static void ConsoleAllPoi()
     {
         // connect sqlite db
-
 
         var connection = new SQLiteConnection(ConnectionString);
 

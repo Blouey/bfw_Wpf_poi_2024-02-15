@@ -26,8 +26,8 @@ public partial class MainWindow : Window
     
     private void InitComboBox()
     {
-        
-        var poiNames = DbContext.GetAllPoiNames();
+        IAccessible dal = new SQLiteDal(@"Data Source=C:\Repos\Databank\Sqlite2\poi.sqlite");
+        var poiNames = dal.GetAllPoiNames();
         Cobx.ItemsSource = poiNames;
         Cobx.IsEditable = true;
         Cobx.IsReadOnly = true;
@@ -36,7 +36,8 @@ public partial class MainWindow : Window
 
     private void Cobx_OnSelected(object sender, RoutedEventArgs e)
     {
-        Poi poi = DbContext.GetPoiByName(Cobx.SelectedValue.ToString());
+        SQLiteDal dal = new SQLiteDal(@"Data Source=C:\Repos\Databank\Sqlite2\poi.sqlite");
+        Poi poi = dal.GetPoiByName(Cobx.SelectedValue.ToString()!);
         
         LblPoi.Content = poi.GetName();
         TxtBemerkung.Text = poi.GetBemerkung();
