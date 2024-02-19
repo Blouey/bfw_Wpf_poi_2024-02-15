@@ -44,8 +44,9 @@
             </StackPanel>
         </ScrollViewer>
         
-<DockPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+<DockPanel x:Name="wvMap" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
             <wv2:WebView2 x:Name="Wv2" Source="https://www.google.de" />
+            
 </DockPanel>
     </Grid>
 </Window>
