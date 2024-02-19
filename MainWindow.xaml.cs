@@ -1,6 +1,5 @@
 ﻿
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
 
@@ -11,8 +10,11 @@ namespace Wpf_PointOfInterest_2024_02_15;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private string _conn =  App.ConnectionString;
+    
     public MainWindow()
     {
+        
         InitializeComponent();
         InitComboBox();
         Wv2.EnsureCoreWebView2Async(null);
@@ -26,7 +28,10 @@ public partial class MainWindow : Window
     
     private void InitComboBox()
     {
-        IAccessible dal = new SQLiteDal(@"Data Source=C:\Repos\Databank\Sqlite2\poi.sqlite");
+        
+            
+        
+        IAccessible dal = new SQLiteDal(_conn);
         var poiNames = dal.GetAllPoiNames();
         Cobx.ItemsSource = poiNames;
         Cobx.IsEditable = true;
@@ -36,7 +41,7 @@ public partial class MainWindow : Window
 
     private void Cobx_OnSelected(object sender, RoutedEventArgs e)
     {
-        SQLiteDal dal = new SQLiteDal(@"Data Source=C:\Repos\Databank\Sqlite2\poi.sqlite");
+        SQLiteDal dal = new SQLiteDal(_conn);
         Poi poi = dal.GetPoiByName(Cobx.SelectedValue.ToString()!);
         
         LblPoi.Content = poi.GetName();
