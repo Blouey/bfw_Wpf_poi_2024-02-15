@@ -2,13 +2,17 @@ namespace Wpf_PointOfInterest_2024_02_15;
 
 public class Poi
 {
-    private int PID;
-    private string Name; 
-    private string Breitengrad;
-    private string Laengengrad;
-    private string Bemerkung;
-    private string Link;
-    
+    public int PID { get; set;}
+    public string Name { get; set;}
+    public string Breitengrad { get; set;}
+    public string Laengengrad { get; set;}
+    public string Bemerkung { get; set;}
+    public string Link { get; set;}
+
+    public Poi()
+    {
+    }
+
     public Poi(int pid, string name, string breitengrad, string laengengrad, string bemerkung, string link)
     {
         PID = pid;

@@ -73,14 +73,14 @@ namespace Wpf_PointOfInterest_2024_02_15;
             List<Poi> pois = new List<Poi>();
             while (reader.Read())
             {
-                pois.Add(new Poi(
-                    Convert.ToInt32(reader["PID"]),
-                    reader["Name"].ToString(),
-                    reader["Breitengrad"].ToString(),
-                    reader["Laengengrad"].ToString(),
-                    reader["Bemerkung"].ToString(),
-                    reader["Link"].ToString()
-                ));
+                Poi p = new Poi();
+                p.PID = Convert.ToInt32(reader["PID"]);
+                p.Name = reader["Name"].ToString();
+                p.Breitengrad = reader["Breitengrad"].ToString();
+                p.Laengengrad = reader["Laengengrad"].ToString();
+                p.Bemerkung = reader["Bemerkung"].ToString();
+                p.Link = reader["Link"].ToString();
+                pois.Add(p);
             }
             _conn.Close();
             return pois;

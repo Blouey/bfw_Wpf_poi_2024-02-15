@@ -1,7 +1,10 @@
 ﻿
 using System.Globalization;
+using System.IO;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Navigation;
+using Microsoft.Win32;
 
 
 namespace Wpf_PointOfInterest_2024_02_15;
@@ -11,7 +14,7 @@ namespace Wpf_PointOfInterest_2024_02_15;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private string _conn =  App.ConnectionString;
+    private readonly string _conn =  App.ConnectionString;
     
     public MainWindow()
     {
@@ -25,6 +28,15 @@ public partial class MainWindow : Window
     private void HypLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
         Wv2.Source = e.Uri;
+        
+        /*
+         * or
+         *
+         * Process process = new Process();
+         * process.StartInfo.FileName = e.Uri.ToString();
+         * process.startInfo.UseShellExecute = true;
+         * process.Start();
+         */
     }
     
     private void InitComboBox()
@@ -51,8 +63,7 @@ public partial class MainWindow : Window
         
         //Wv2.Source = new Uri($"https://www.openstreetmap.org/#map=18/{poi.GetBreitengrad()}/{poi.GetLaengengrad()}");
         
-        
-        string HtmlCode = @$"
+        string htmlCode = @$"
                             <!DOCTYPE html>
                                 <html lang=""de"">
                                     <head>
@@ -69,6 +80,42 @@ public partial class MainWindow : Window
                                     </body>
                                 </html>";
 
-        Wv2.NavigateToString(HtmlCode);
+        Wv2.NavigateToString(htmlCode);
     }
+
+    private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void MnuClose_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private async void MnuExport_OnClick(object sender, RoutedEventArgs e)
+    {
+        SaveFileDialog sfd = new SaveFileDialog();
+
+        
+        SQLiteDal dal = new SQLiteDal(_conn);
+        List<Poi> pois = dal.GetAllPoi();
+        
+        sfd.Title = "Export to JSON";
+        sfd.Filter = "JSON Files (*.json)|*.json";
+        var date = DateTime.Now.ToString("yyyy-MM-dd");
+        sfd.FileName = $"poiExport_{date}.json";
+        sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        sfd.OverwritePrompt = true;
+        
+        if (sfd.ShowDialog() != true) return;
+        
+        string filename = sfd.FileName;
+
+        
+             
+        
+        File.WriteAllText(filename, JsonSerializer.Serialize(pois, new JsonSerializerOptions { WriteIndented = true })); 
+    }
+    
 }
